@@ -1,10 +1,3 @@
-# POST 登录
-
-## POST一
-
-> 需要自己获得表单数据
-
-```python
 import scrapy
 from scrapy.http import HtmlResponse
 
@@ -48,49 +41,3 @@ class GithubSpider(scrapy.Spider):
 
     def after_login(self, response: HtmlResponse):
         print(response.url)  # 跳转到首页 https://github.com 登录成功，否则登录失败
-```
-
-### 重点
-
-```python
-yield scrapy.FormRequest(
-    url='https://github.com/session',
-    formdata={},
-    callback=self.after_login
-)
-```
-
-## POST二
-
-> 自动提交表单，只需填写关键字段 formdata={}
-
-```python
-import scrapy
-from scrapy.http import HtmlResponse
-
-
-class Github2Spider(scrapy.Spider):
-    name = 'github2'
-    allowed_domains = ['github.com']
-    start_urls = ['https://github.com/login']
-
-    def parse(self, response, **kwargs):
-        yield scrapy.FormRequest.from_response(
-            response=response,
-            formdata={'login': 'qingyueheji@qq.com', 'password': 'silvery.0'},
-            callback=self.after_login
-        )
-
-    def after_login(self, response: HtmlResponse):
-        print(response.url)  # 跳转到首页 https://github.com 登录成功，否则登录失败
-```
-
-### 重点
-
-```python
-yield scrapy.FormRequest.from_response(
-    response=response,
-    formdata={'login': 'qingyueheji@qq.com', 'password': 'silvery.0'},
-    callback=self.after_login
-)
-```
