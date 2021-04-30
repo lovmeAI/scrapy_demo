@@ -8,7 +8,7 @@
 
 ## 安装
 
-安装：`pip install scrapy-redis` 官方站点：[https://github.com/rolando/scrapy-redis][https://github.com/rolando/scrapy-redis]
+安装：`pip install scrapy-redis` 官方站点：[https://github.com/rolando/scrapy-redis](https://github.com/rolando/scrapy-redis)
 
 ## Scrapy-Redis架构
 
