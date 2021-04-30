@@ -6,8 +6,21 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
+from pymongo import MongoClient
 
 
 class ScrapyDemoPipeline:
+    def open_spider(self, spider):
+        '''第一次打开执行，执行一次'''
+        client = MongoClient()
+        self.shw = client['spider']['gushiwen']
+
+    # def close_spider(self, spider):
+    #     pass
+
     def process_item(self, item, spider):
-        return item
+        return self.__getattribute__(spider.name)(item)
+
+    def gushiwen(self, item):
+        self.shw.insert(item)
+        print(f"[{item['author']}]{item['title']}{item['href']}")
