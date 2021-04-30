@@ -69,9 +69,10 @@ ROBOTSTXT_OBEY = True
 # Enable or disable downloader middlewares
 # 启用或禁用下载器中间件
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    'scrapy_demo.middlewares.ScrapyDemoDownloaderMiddleware': 543,
-# }
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy_demo.middlewares.UserAgentDemoDownloaderMiddleware':      543,
+    'scrapy_demo.middlewares.CheckUserAgentDemoDownloaderMiddleware': 544,
+}
 
 # Enable or disable extensions
 # 启用或禁用扩展程序

@@ -2,8 +2,8 @@
 #
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-
-from scrapy import signals
+from fake_useragent import UserAgent
+from scrapy import signals, Request
 
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
@@ -101,3 +101,24 @@ class ScrapyDemoDownloaderMiddleware:
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+class UserAgentDemoDownloaderMiddleware:
+    def process_request(self, request: Request, spider):
+        # 自动使用UserAgent
+        ua = UserAgent()
+        request.headers['User-Agent'] = ua.random
+
+        # 中间件使用代理
+        proxy = "http://3.224.205.253:80"  # 协议://ip:port
+        request.meta["proxy"] = proxy
+        return None
+
+
+class CheckUserAgentDemoDownloaderMiddleware:
+    def process_response(self, request, response, spider):
+        # print(request.headers['User-Agent'])
+        # for k, v in request.headers.items():
+        #     print(k, v)
+
+        return response
