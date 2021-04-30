@@ -1,7 +1,7 @@
-# Cookie和Proxy
+import scrapy
+from scrapy.http import HtmlResponse
 
-## spiders 脚本中
-```python
+
 class LovmeSpider(scrapy.Spider):
     name = 'lovme'
     allowed_domains = ['natapp1.cc']
@@ -21,5 +21,3 @@ class LovmeSpider(scrapy.Spider):
 
     def parse(self, response: HtmlResponse, **kwargs):
         print(response.text)
-
-```
