@@ -1,13 +1,12 @@
-# 这是一只不一样的scrapy爬虫(CrawlSpider)
+import scrapy
+from scrapy.http import HtmlResponse
+from scrapy.linkextractors import LinkExtractor
+from scrapy.spiders import CrawlSpider, Rule
 
-#### 使用命名(请参考demo01)
-创建`CrawlSpider`爬虫 `scrapy genspider -t crawl 爬虫名 允许爬取的域名`
 
-```python
 class TheorySpider(CrawlSpider):
     name = 'theory'
     allowed_domains = ['people.com.cn']
-    # 其实URL
     start_urls = ['http://theory.people.com.cn/GB/82288/419180/419743/index1.html']
 
     rules = (
@@ -21,4 +20,3 @@ class TheorySpider(CrawlSpider):
         item = {}
         print(response.xpath("//div[@class='text_c']/h1/text()").get(), response.url)
         return item
-```
