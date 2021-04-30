@@ -10,4 +10,5 @@ from itemadapter import ItemAdapter
 
 class ScrapyDemoPipeline:
     def process_item(self, item, spider):
-        return item
+        print(spider.name)  # 慢慢做判断处理
+        print(item)

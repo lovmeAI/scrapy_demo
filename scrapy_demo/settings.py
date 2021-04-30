@@ -83,9 +83,9 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # 配置项目管道
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#     'scrapy_demo.pipelines.ScrapyDemoPipeline': 300,  # 300 权重等级
-# }
+ITEM_PIPELINES = {
+    'scrapy_demo.pipelines.ScrapyDemoPipeline': 300,  # 300 权重等级
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # 启用和配置自动限速扩展（默认情况下禁用）
