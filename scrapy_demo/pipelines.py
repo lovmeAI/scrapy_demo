@@ -24,3 +24,6 @@ class ScrapyDemoPipeline:
     def gushiwen(self, item):
         self.shw.insert(item)
         print(f"[{item['author']}]{item['title']}{item['href']}")
+
+    def ptwxz(self, item):
+        print(item)
